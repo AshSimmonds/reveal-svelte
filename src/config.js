@@ -12,7 +12,7 @@ import 'reveal.js/plugin/highlight/monokai.css';
 export default {
     // App Config
     app: {
-        name: 'Reveal.js with Svelte and Vite',
+        name: 'Recombobulator | Blue Dwarf Space',
     },
     // Reveal Config
     reveal: {
