@@ -5,7 +5,7 @@
 <section>
     <h2>Final page</h2>
 
-    <pre>
+    <pre >
         {JSON.stringify(someStuff, null, 4)}
         <!-- {#each someStuff as item} -->
             <!-- <p>{JSON.stringify(item, null, 4)}</p> -->
