@@ -11,6 +11,8 @@
     import Media from "./slides/examples/Media.svelte"
     import Transitions from "./slides/examples/Transitions.svelte"
 
+    import DataTest01 from "./slides/DataTest01.svelte"
+
     import Final from "./slides/Final.svelte"
 
     const partner = ["dude", "sweet"]
@@ -51,8 +53,10 @@
             }
         )
 
-        let data = await response.text()
-        console.log(data)
+        let data = await response.json()
+
+        console.log(`data: ${JSON.stringify(data, null, 4)}`)
+
         return data
     }
 </script>
@@ -75,6 +79,7 @@
 {#await someStuff}
 .
 {:then someStuff}
+<DataTest01 theReference={someStuff.fields.reference} />
 <Final {someStuff} />
 {/await}
 
