@@ -3,6 +3,8 @@
 </script>
 
 <section>
-    <h2>{JSON.stringify(theReference, null, 4)}</h2>
+    <h2>{theReference}</h2>
+
+
 </section>
 
