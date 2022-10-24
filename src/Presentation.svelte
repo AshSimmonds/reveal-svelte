@@ -11,18 +11,18 @@
     import Media from './slides/examples/Media.svelte';
     import Transitions from './slides/examples/Transitions.svelte';
 
-    const partner = ['Svelte', 'Reveal.js'];
+    const partner = ['dude', 'sweet'];
 </script>
 
 <Title/>
 <Love {partner}/>
 <GettingStarted/>
 <AutoAnimate/>
-<Backgrounds/>
-<Barebones/>
-<LayoutHelpers/>
-<Markdown/>
+<!-- <Backgrounds/> -->
+<!-- <Barebones/> -->
+<!-- <LayoutHelpers/> -->
+<!-- <Markdown/> -->
 <!-- <Math/> -->
 <!-- <Media/> -->
-<Transitions/>
+<!-- <Transitions/> -->
 

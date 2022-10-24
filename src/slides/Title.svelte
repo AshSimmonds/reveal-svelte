@@ -1,20 +1,21 @@
 <script>
     import { onMount } from 'svelte';
 
+    const timeoutTime = 3333
     let title;
     onMount(() => {
         let timeout;
         title = new Promise(resolve => {
-            timeout = setTimeout(() => resolve('What is Recombobulator?'), 3333);
+            timeout = setTimeout(() => resolve('What is Recombobulator?'), timeoutTime);
         });
         () => clearTimeout(timeout);
     });
 </script>
 
-<section>
+<section >
     <h2>
         {#await title}
-            Wait a sec...
+            Wait a sec... (arbitrary delay of {timeoutTime}ms)
         {:then result}
             {result}
         {/await}

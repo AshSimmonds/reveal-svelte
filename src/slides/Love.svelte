@@ -3,12 +3,12 @@
 </script>
 
 <section>
-    <h2>{partner.join(' + ')} = <span class="heart">&#x2764</span></h2>
-    Lets have fun!
+    <h2>{partner.join(' + ')} = <span class="rocket">🚀</span></h2>
+    Prepare for blast off
 </section>
 
 <style>
-    .heart {
-        color: #f44133;
+    .rocket {
+        color: #008888;
     }
 </style>
