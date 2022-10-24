@@ -5,7 +5,7 @@
     onMount(() => {
         let timeout;
         title = new Promise(resolve => {
-            timeout = setTimeout(() => resolve('Whats nice together?'), 1000);
+            timeout = setTimeout(() => resolve('What is Recombobulator?'), 3333);
         });
         () => clearTimeout(timeout);
     });
@@ -20,15 +20,4 @@
         {/await}
     </h2>
 
-    <pre>
-    <code data-line-numbers data-trim data-no-escape>
-    {
-    `const name = "hello world";
-    if(name === 'hello') {
-      console.log('world');
-    }
-    `
-    }
-    </code>
-    </pre>
 </section>

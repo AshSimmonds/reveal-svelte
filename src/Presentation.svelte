@@ -22,7 +22,7 @@
 <Barebones/>
 <LayoutHelpers/>
 <Markdown/>
-<Math/>
-<Media/>
+<!-- <Math/> -->
+<!-- <Media/> -->
 <Transitions/>
 
