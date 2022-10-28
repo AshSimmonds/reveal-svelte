@@ -50,7 +50,6 @@
 <Title />
 <Love {partner} />
 <!-- <GettingStarted/> -->
-<!-- <AutoAnimate/> -->
 <!-- <Backgrounds/> -->
 <!-- <Barebones/> -->
 <!-- <LayoutHelpers/> -->
@@ -72,5 +71,6 @@
     .
 {:then someStuff}
     <DataTest01 {someStuff} />
+    <AutoAnimate {someStuff} />
     <Final {someStuff} />
 {/await}

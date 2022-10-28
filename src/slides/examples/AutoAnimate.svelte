@@ -1,39 +1,66 @@
 <script>
-    import logo from "../../assets/blue_dwarf_space_letterhead_logo.png"
+    import reveal from "reveal.js"
+import logo from "../../assets/blue_dwarf_space_letterhead_logo.png"
+
+    export let someStuff
+
+    const throwawayApiKey = import.meta.env
+        .VITE_THROWAWAY_BLUEDWARF_RECOMBOBULATOR_BASE_KEY
+    // used for temporary testing, only has access to a single base
+
+    let theNuclearPowerSauce
+
+    theNuclearPowerSauce =
+        someStuff && someStuff.fields ? someStuff.fields.nuclear : 0
+
+    async function updateNuclear(newNuclear) {
+
+        theNuclearPowerSauce = newNuclear
+
+        let headersList = {
+            Accept: "*/*",
+            "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+            Authorization: "Bearer " + throwawayApiKey,
+            "Content-Type": "application/json",
+        }
+
+        let bodyContent = JSON.stringify({
+            fields: {
+                reference: theNuclearPowerSauce,
+            },
+        })
+
+        let response = await fetch(
+            "https://api.airtable.com/v0/appvvqr9kvHiSFbfT/asdf/recyNdg321hBbl7XU/",
+            {
+                method: "PATCH",
+                body: bodyContent,
+                headers: headersList,
+            }
+        )
+
+        let data = await response.text()
+
+        console.log(`data`, JSON.stringify(data, null, 4))
+
+        console.log("theNuclearPowerSauce: ", theNuclearPowerSauce)
+
+        // reveal.right()
+    }
+
+    console.log(`someStuff: ${JSON.stringify(someStuff, null, 4)}`)
 </script>
 
 <section data-auto-animate data-auto-animate-unmatched="fade">
-    <h3>Auto-Animate Example</h3>
+    <h3>Let us animate stuff</h3>
     <p>This will fade out</p>
     <img src={logo} alt="logo" style="height: 100px;" />
-    <pre data-id="code"><code data-line-numbers class="hljs" data-trim>
-  {@html `
-<script>
-  let count = 0;
-</script>
-<p>{count}</p>
-<p>
-<button on:click={() => count += 1}>Increment</button>
-</p>
-<p>
-<button on:click={() => count -= 1}>Decrement</button>
-</p>
-  `}
-  </code></pre>
 </section>
 <section data-auto-animate data-auto-animate-unmatched="fade">
-    <h3>Auto-Animate Example</h3>
+    <h3>Let us animate stuff</h3>
     <p style="opacity: 0.2; margin-top: 100px;">This will fade out</p>
-    <p>This element is unmatched</p>
+    <p>This element is unmatched so will pop in</p>
     <img src={logo} alt="logo" style="height: 150px;" />
-    <pre data-id="code"><code data-line-numbers class="hljs" data-trim>
-  {`
-    function Example() {
-      New line!
-      const [count, setCount] = useState(0);
-    }
-  `}
-  </code></pre>
 </section>
 
 <section data-auto-animate>
@@ -49,61 +76,11 @@
         data-id="text-props"
         style="background: #555; line-height: 3em; letter-spacing: 0.2em;"
     >
-        Line Height & Letter Spacing
+        Line Height & Kerning
     </p>
 </section>
 
-<section>
-    <section data-auto-animate>
-        <pre data-id="code"><code data-line-numbers class="hljs" data-trim>
-					{@html `
-					<script>
-					let count = 0;
 
-					function handleClick() {
-							count += 1;
-					}
-					</script>
-
-					<button on:click={handleClick}>
-					Clicked {count} {count === 1 ? 'time' : 'times'}
-					</button>
-					`}
-    </code></pre>
-    </section>
-    <section data-auto-animate>
-        <pre data-id="code"><code data-line-numbers class="hljs" data-trim>
-					{@html `
-						<script>
-						function handleClick() {
-								alert('no more alerts')
-						}
-						</script>
-
-						<button on:click|once={handleClick}>
-						Click me
-						</button>
-						`}
-    </code></pre>
-    </section>
-    <section data-auto-animate>
-        <pre data-id="code"><code data-line-numbers class="hljs" data-trim>
-    {@html `
-						<script>
-						function handleClick() {
-								// A comment
-								alert('no more alerts')
-						}
-						</script>
-
-			      <!-- Event modifiers -->
-						<button on:click|once={handleClick}>
-						Click me
-						</button>
-    `}
-    </code></pre>
-    </section>
-</section>
 
 <section>
     <section data-auto-animate>
@@ -133,43 +110,49 @@
 </section>
 
 <section data-auto-animate style="height: 600px">
-    <h3 style="opacity: 0.3; font-size: 18px;">SLIDE 1</h3>
-    <h2 data-id="title" style="margin-top: 260px;">Animate Anything</h2>
+    <h3 style="opacity: 0.3; font-size: 18px;">Declaration about your payload</h3>
+    <h2 data-id="title" style="margin-top: 260px;">Nuclear Power Sauce</h2>
     <div
         data-id="1"
-        style="background: white; position: absolute; top: 150px; left: 16%; width: 60px; height: 60px;"
-    />
+        style="background: {theNuclearPowerSauce === 1 ? "cyan" : "grey"}; position: absolute; top: 150px; left: 16%; width: 60px; height: 60px; cursor: pointer;"
+        on:click={() => (
+            updateNuclear(1))
+            }
+    ></div>
     <div
         data-id="2"
-        style="background: white; position: absolute; top: 150px; left: 36%; width: 60px; height: 60px;"
-    />
+        style="background: {theNuclearPowerSauce === 2 ? "magenta" : "grey"}; position: absolute; top: 150px; left: 36%; width: 60px; height: 60px; cursor: pointer;"
+        on:click={() => (theNuclearPowerSauce = 2)}
+    ></div>
     <div
         data-id="3"
-        style="background: white; position: absolute; top: 150px; left: 56%; width: 60px; height: 60px;"
-    />
+        style="background: {theNuclearPowerSauce === 3 ? "yellow" : "grey"}; position: absolute; top: 150px; left: 56%; width: 60px; height: 60px; cursor: pointer;"
+        on:click={() => (theNuclearPowerSauce = 3)}
+    ></div>
     <div
         data-id="4"
-        style="background: white; position: absolute; top: 150px; left: 76%; width: 60px; height: 60px;"
-    />
+        style="background: {theNuclearPowerSauce === 4 ? "red" : "grey"}; position: absolute; top: 150px; left: 76%; width: 60px; height: 60px; cursor: pointer;"
+        on:click={() => (theNuclearPowerSauce = 4)}
+    ></div>
 </section>
 <section data-auto-animate style="height: 600px">
-    <h3 style="opacity: 0.3; font-size: 18px;">SLIDE 2</h3>
-    <h2 data-id="title" style="margin-top: 500px">With Auto Animate</h2>
+    <h3 style="opacity: 0.3; font-size: 18px;">Declaration about your payload</h3>
+    <h2 data-id="title" style="margin-top: 500px">Nuclear Power Source</h2>
     <div
         data-id="1"
-        style="background: cyan; position: absolute; bottom: 190px; left: 16%; width: 60px; height: 60px;"
+        style="background: {theNuclearPowerSauce === 1 ? "cyan" : "grey"}; position: absolute; bottom: 190px; left: 16%; width: 60px; height: 60px;"
     />
     <div
         data-id="2"
-        style="background: magenta; position: absolute; bottom: 190px; left: 36%; width: 60px; height: 160px;"
+        style="background: {theNuclearPowerSauce === 2 ? "magenta" : "grey"}; position: absolute; bottom: 190px; left: 36%; width: 60px; height: 160px;"
     />
     <div
         data-id="3"
-        style="background: yellow; position: absolute; bottom: 190px; left: 56%; width: 60px; height: 260px;"
+        style="background: {theNuclearPowerSauce === 3 ? "yellow" : "grey"}; position: absolute; bottom: 190px; left: 56%; width: 60px; height: 260px;"
     />
     <div
         data-id="4"
-        style="background: red; position: absolute; bottom: 190px; left: 76%; width: 60px; height: 360px;"
+        style="background: {theNuclearPowerSauce === 4 ? "red" : "grey"}; position: absolute; bottom: 190px; left: 76%; width: 60px; height: 360px;"
     />
 </section>
 <section data-auto-animate style="height: 600px">
